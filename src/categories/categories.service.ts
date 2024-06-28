@@ -9,7 +9,9 @@ export class CategoriesService {
   constructor(private prismaService: PrismaService) {}
 
   create(createCategoryDto: CreateCategoryDto) {
-    return 'This action adds a new category';
+    return this.prismaService.category.create({
+      data: createCategoryDto,
+    });
   }
 
   findAll() {

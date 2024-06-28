@@ -4,7 +4,7 @@ GET http://localhost:3000/
 GET http://localhost:3000/categories
 
 ###
-GET http://localhost:3000/categories/12
+GET http://localhost:3000/categories/1
 
 ###
 POST http://localhost:3000/categories
