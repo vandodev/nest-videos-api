@@ -22,3 +22,6 @@ Content-Type: application/json
 {
     "description": "xpto"
 }
+
+###
+DELETE http://localhost:3000/categories/1
