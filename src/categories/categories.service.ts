@@ -9,6 +9,7 @@ export class CategoriesService {
   constructor(private prismaService: PrismaService) {}
 
   create(createCategoryDto: CreateCategoryDto) {
+    // throw new Error("xpto")
     return this.prismaService.category.create({
       data: createCategoryDto,
     });
