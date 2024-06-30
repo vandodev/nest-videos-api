@@ -1,11 +1,32 @@
 import { Injectable } from '@nestjs/common';
 import { CreateVideoDto } from './dto/create-video.dto';
 import { UpdateVideoDto } from './dto/update-video.dto';
+import { PrismaService } from '../prisma/prisma/prisma.service';
 
 @Injectable()
 export class VideosService {
-  create(createVideoDto: CreateVideoDto) {
-    return 'This action adds a new video';
+  constructor(private prismaService: PrismaService) {}
+
+  async create(createVideoDto: CreateVideoDto) {
+    const categoryExists =
+      (await this.prismaService.category.count({
+        where: {
+          id: createVideoDto.category_id,
+        },
+      })) != 0;
+
+    if (!categoryExists) {
+      throw new Error('Category Not Found');
+    }
+
+    return this.prismaService.video.create({
+      data: {
+        title: createVideoDto.title,
+        description: createVideoDto.description,
+        category_id: createVideoDto.category_id,
+        file_path: 'fake/video.mp4',
+      },
+    });
   }
 
   findAll() {
