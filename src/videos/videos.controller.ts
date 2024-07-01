@@ -25,8 +25,11 @@ export class VideosController {
   )
   file: Express.Multer.File,
 ) {
-    console.log(file)
-    return this.videosService.create(createVideoDto);
+    // console.log(file)
+    return this.videosService.create({
+      ...createVideoDto,
+      file,
+    });    
   }
 
   @Get()

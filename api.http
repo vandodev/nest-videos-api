@@ -59,3 +59,5 @@ Content-Disposition: form-data; name="category_id"
 Content-Disposition: form-data; name="file"; filename="video.mp4"
 Content-Type: video/mp4
 
+< ./README.md
+------WebKitFormBoundary1234--
