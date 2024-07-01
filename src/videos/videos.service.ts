@@ -31,7 +31,11 @@ export class VideosService {
   }
 
   findAll() {
-    return `This action returns all videos`;
+    return this.prismaService.video.findMany({
+      include: {
+        category: true,
+      },
+    });
   }
 
   findOne(id: number) {
