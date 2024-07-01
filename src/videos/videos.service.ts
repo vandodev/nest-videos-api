@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateVideoDto } from './dto/create-video.dto';
 import { UpdateVideoDto } from './dto/update-video.dto';
 import { PrismaService } from '../prisma/prisma/prisma.service';
+import { InvalidRelationError } from '../errors/invalid-relation.error';
 
 @Injectable()
 export class VideosService {
@@ -16,7 +17,7 @@ export class VideosService {
       })) != 0;
 
     if (!categoryExists) {
-      throw new Error('Category Not Found');
+      throw new InvalidRelationError('Category Not Found');
     }
 
     return this.prismaService.video.create({
