@@ -59,5 +59,8 @@ Content-Disposition: form-data; name="category_id"
 Content-Disposition: form-data; name="file"; filename="video.mp4"
 Content-Type: video/mp4
 
-< ./README.md
+< ./video.mp4
 ------WebKitFormBoundary1234--
+
+###
+GET http://localhost:3000/videos/file/1722093813475.6804.mp4
