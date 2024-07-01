@@ -11,8 +11,8 @@ POST http://localhost:3000/categories
 Content-Type: application/json
 
 {
-    # "name": "categoria test",
-    # "description": "5"
+    "name": "categoria test",
+    "description": "5"
 }
 
 ###
@@ -38,3 +38,24 @@ Content-Type: application/json
     "description": "video test",
     "category_id": 10
 }
+
+###
+POST http://localhost:3000/videos
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary1234
+
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="title"
+
+Video 1
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="description"
+
+Description 1
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="category_id"
+
+2
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="file"; filename="video.mp4"
+Content-Type: video/mp4
+
