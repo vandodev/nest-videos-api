@@ -7,6 +7,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { join } from 'path';
 import { createReadStream } from 'fs';
 import { Response } from 'express';
+import { VideoSerializer } from './video.serializer';
 
 
 @Controller('videos')
@@ -37,8 +38,9 @@ export class VideosController {
   }
 
   @Get()
-  findAll() {
-    return this.videosService.findAll();
+  async findAll() {
+    const videos = await this.videosService.findAll();
+    return videos.map((video) => new VideoSerializer(video));
   }
 
   @Get(':id')
